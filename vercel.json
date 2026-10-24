@@ -2,7 +2,7 @@
   "functions": {
     "app/api/upscale/route.ts": {
       "maxDuration": 300,
-      "memory": 3009
+      "memory": 2048
     }
   }
 }

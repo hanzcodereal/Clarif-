@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Cllarif',
+  title: 'Clarif',
   description: 'Upscale gambar dengan AI'
 };
 

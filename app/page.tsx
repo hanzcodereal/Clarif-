@@ -80,7 +80,7 @@ export default function Page() {
   return (
     <div className="container">
       <header className="header">
-        <div className="logo">Cllarif<span>.</span></div>
+        <div className="logo">Clarif<span>.</span></div>
         <div className="header-right">
           <div className="badge forum">Hanzz Forum Grupp</div>
           <div className="badge">AI Upscale</div>
@@ -193,7 +193,7 @@ export default function Page() {
         )}
 
         <footer className="footer">
-          <span>Cllarif</span>
+          <span>Clarif</span>
           <span>·</span>
           <span className="footer-brand">Hanzz Forum Grupp</span>
         </footer>

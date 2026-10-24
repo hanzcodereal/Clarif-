@@ -498,7 +498,7 @@ export async function upscale(
 
           if (modeKey === 'uhd ai' || keepSize) {
             const adjustedBuf = await adjustImage(rawDirectUrl, origW, origH, false);
-            activeUrl = await uploadDirect(adjustedBuf, `clarif_${origW}x${origH}.jpg`);
+            activeUrl = await uploadDirect(adjustedBuf, `cllarif_${origW}x${origH}.jpg`);
             outW = origW;
             outH = origH;
             activeSize = `${(adjustedBuf.length / (1024 * 1024)).toFixed(1)}MB`;
@@ -511,7 +511,7 @@ export async function upscale(
             const targetH = k * baseH;
             if (targetW > 0 && targetH > 0 && (targetW !== outW || targetH !== outH)) {
               const adjustedBuf = await adjustImage(rawDirectUrl, targetW, targetH, true, origW, origH);
-              activeUrl = await uploadDirect(adjustedBuf, `clarif_${targetW}x${targetH}.jpg`);
+              activeUrl = await uploadDirect(adjustedBuf, `cllarif_${targetW}x${targetH}.jpg`);
               outW = targetW;
               outH = targetH;
               activeSize = `${(adjustedBuf.length / (1024 * 1024)).toFixed(1)}MB`;
@@ -542,4 +542,4 @@ export async function upscale(
 
   if (!finalResult) throw new Error('Timeout');
   return finalResult;
-      }
+}

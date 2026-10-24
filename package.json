@@ -1,9 +1,9 @@
 {
-  "name": "clarif",
+  "name": "cllarif",
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",

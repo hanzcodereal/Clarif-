@@ -1,8 +1,8 @@
-# Cllarif
+# Clarif
 
 Web upscale gambar berbasis AI yang terintegrasi dengan Wink AI (Meitu).
 
-## Apa Itu Cllarif?
+## Apa Itu Clarif?
 
 Clarif adalah aplikasi web sederhana untuk **memperbesar dan meningkatkan kualitas gambar** menggunakan layanan AI dari Wink AI. Pengguna cukup upload gambar, pilih mode, dan hasil upscale bisa langsung diunduh.
 
@@ -31,7 +31,7 @@ Dibuat oleh **Hanzz Forum Grupp**.
 ## Struktur Proyek
 
 ```
-cllarif/
+clarif/
 ├── app/
 │   ├── layout.tsx
 │   ├── globals.css

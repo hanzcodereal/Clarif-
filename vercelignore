@@ -1,0 +1,5 @@
+node_modules
+.next
+.git
+.wink_sessions.json
+*.log

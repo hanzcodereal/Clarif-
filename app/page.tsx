@@ -15,6 +15,90 @@ interface Result {
   mode: string;
 }
 
+function CompareSlider({
+  before,
+  after,
+  beforeLabel = 'Sebelum',
+  afterLabel = 'Sesudah'
+}: {
+  before: string;
+  after: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+}) {
+  const [pos, setPos] = useState(50);
+  const [dragging, setDragging] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  function updateFromClientX(clientX: number) {
+    const el = wrapRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const raw = ((clientX - rect.left) / rect.width) * 100;
+    setPos(Math.max(0, Math.min(100, raw)));
+  }
+
+  function onMouseDown(e: React.MouseEvent) {
+    setDragging(true);
+    updateFromClientX(e.clientX);
+  }
+
+  function onMouseMove(e: React.MouseEvent) {
+    if (!dragging) return;
+    updateFromClientX(e.clientX);
+  }
+
+  function onMouseUp() {
+    setDragging(false);
+  }
+
+  function onTouchStart(e: React.TouchEvent) {
+    setDragging(true);
+    updateFromClientX(e.touches[0].clientX);
+  }
+
+  function onTouchMove(e: React.TouchEvent) {
+    if (!dragging) return;
+    updateFromClientX(e.touches[0].clientX);
+  }
+
+  function onTouchEnd() {
+    setDragging(false);
+  }
+
+  return (
+    <div
+      ref={wrapRef}
+      className="compare-wrap"
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
+      <img src={after} alt="after" className="compare-img" draggable={false} />
+      <img
+        src={before}
+        alt="before"
+        className="compare-img compare-before"
+        draggable={false}
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+      />
+
+      <div className="compare-label compare-label-left">{beforeLabel}</div>
+      <div className="compare-label compare-label-right">{afterLabel}</div>
+
+      <div className="compare-line" style={{ left: `${pos}%` }} />
+      <div className="compare-knob" style={{ left: `${pos}%` }}>
+        <span>‹</span>
+        <span>›</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Page() {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -166,7 +250,7 @@ export default function Page() {
 
         {result && (
           <div className="card result-card">
-            <img src={result.url} alt="result" className="result-img" />
+            {preview && <CompareSlider before={preview} after={result.url} />}
 
             <div className="result-meta">
               <div className="meta-item">

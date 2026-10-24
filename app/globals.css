@@ -269,15 +269,6 @@ html, body {
   gap: 16px;
 }
 
-.result-img {
-  width: 100%;
-  border-radius: 12px;
-  display: block;
-  max-height: 500px;
-  object-fit: contain;
-  background: #000;
-}
-
 .result-meta {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -361,6 +352,91 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
+.compare-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  user-select: none;
+  background: #000;
+  cursor: ew-resize;
+  touch-action: none;
+  aspect-ratio: 16 / 9;
+  max-height: 560px;
+}
+
+.compare-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.compare-before {
+  z-index: 2;
+}
+
+.compare-label {
+  position: absolute;
+  top: 12px;
+  z-index: 4;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.compare-label-left {
+  left: 12px;
+}
+
+.compare-label-right {
+  right: 12px;
+}
+
+.compare-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: white;
+  transform: translateX(-50%);
+  z-index: 3;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.compare-knob {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  z-index: 4;
+  cursor: ew-resize;
+}
+
+.compare-knob span {
+  line-height: 1;
+}
+
 @media (max-width: 768px) {
   .bento {
     grid-template-columns: repeat(2, 1fr);
@@ -378,5 +454,10 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+  .compare-knob {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
   }
 }
